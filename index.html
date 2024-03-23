@@ -1,46 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
+    <title>Associazione "Fino all'ultimo respiro" - Sito in costruzione</title>
     <style>
+        @font-face {
+            font-family: 'AileronRegular';
+            src: url('public/aileron/aileron-regular-webfont.woff2') format('woff2'),
+                 url('public/aileron/aileron-regular-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'AileronRegular';
+            src: url('public/aileron/aileron-bold-webfont.woff2') format('woff2'),
+                 url('public/aileron/aileron-bold-webfont.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'AileronRegular';
+            src: url('public/aileron/aileron-italic-webfont.woff2') format('woff2'),
+                 url('public/aileron/aileron-italic-webfont.woff') format('woff');
+            font-weight: italic;
+            font-style: normal;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: AileronRegular, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f1f1f1;
-        }
-
-        .container {
+            background-image: url('public/bg/1.jpg');
             text-align: center;
-            margin-top: 20%;
         }
-
-        h1 {
-            color: #333;
-            font-size: 3em;
+        .logo{
+            height: 350px;
+            width: 350px;
         }
-
-        p {
-            color: #555;
-            font-size: 1.5em;
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
         }
-
-        @media only screen and (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            p {
-                font-size: 1em;
-            }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .quote {
+            font-style: italic;
+            padding-top: 1rem;
+            padding-bottom: 3rem;
+        }
+        .donation-info {
+            padding-top: 3rem;
+            padding-bottom: 1rem;
+            text-align: left;
+        }
+        .social-buttons {
+            margin-top: 2rem;
+        }
+        .social-buttons a {
+            display: inline-block;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .social-buttons a i {
+            color: black;
+            font-size: 2em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Under Construction</h1>
-        <p>We are working on something awesome. Please check back later!</p>
+        <img class="logo" src="public/logo.png" alt="Logo Associazione Fino all'ultimo respiro">
+        <div class="quote">
+            <p>"Ci sono gli eroi della Marvel gli eroi della Comics e poi ci siete voi... avete un potere che io considero quello più forte e più potente: date speranza a noi malati di fibrosi cistica."</p>
+            <p>- Alessia Mantonico</p>
+        </div>
+
+        <h2> Sito atttualmente in costruzione, stiamo lavorando su qualcosa di fantastico!</h2>
+
+        <div class="donation-info">
+            <h3>Sostienici:</h3>
+            <p><strong>C/C Banca:</strong> IT 62 S 05696 51470 00004 1680X55</p>
+            <p><strong>Beneficiario:</strong> Fino all'ultimo respiro</p>
+            <p>Seguici sui nostri profili social per restare aggiornato sulle nostre iniziative</p>
+        </div>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/finoallultimorespiro.org//"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/finoallultimorespiro_org/"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:info@finoallultimorespiro.org"><i class="fas fa-envelope"></i></a>
+
+        </div>
     </div>
 </body>
 </html>
