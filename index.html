@@ -1,87 +1,146 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <title>Associazione "Fino all'ultimo respiro" - Sito in costruzione</title>
     <link rel="icon" href="favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <style>
         @font-face {
             font-family: 'AileronRegular';
             src: url('public/aileron/aileron-regular-webfont.woff2') format('woff2'),
-                 url('public/aileron/aileron-regular-webfont.woff') format('woff');
+                url('public/aileron/aileron-regular-webfont.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
+
         @font-face {
             font-family: 'AileronRegular';
             src: url('public/aileron/aileron-bold-webfont.woff2') format('woff2'),
-                 url('public/aileron/aileron-bold-webfont.woff') format('woff');
+                url('public/aileron/aileron-bold-webfont.woff') format('woff');
             font-weight: bold;
             font-style: normal;
         }
+
         @font-face {
             font-family: 'AileronRegular';
             src: url('public/aileron/aileron-italic-webfont.woff2') format('woff2'),
-                 url('public/aileron/aileron-italic-webfont.woff') format('woff');
+                url('public/aileron/aileron-italic-webfont.woff') format('woff');
             font-weight: italic;
             font-style: normal;
         }
+
         body {
             font-family: AileronRegular, sans-serif;
             margin: 0;
             padding: 0;
             background-image: url('public/bg/1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             text-align: center;
         }
-        .logo{
-            height: 350px;
-            width: 350px;
-        }
+
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 10px;
         }
+
+        .logo {
+            height: 300px;
+            width: 300px;
+        }
+
         img {
             max-width: 100%;
             height: auto;
         }
+
         .quote {
             font-style: italic;
             padding-top: 1rem;
-            padding-bottom: 3rem;
+            padding-bottom: 2rem;
         }
+
         .donation-info {
             padding-top: 3rem;
-            padding-bottom: 1rem;
+            padding-bottom: 2rem;
             text-align: left;
+            border-top: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            margin-top: 3rem;
         }
+
+        .construction-title{
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            border-top: 2px solid #ccc;
+            margin-top: 3rem;
+        }
+
         .social-buttons {
             margin-top: 2rem;
         }
+
         .social-buttons a {
             display: inline-block;
             margin-right: 10px;
             margin-left: 10px;
         }
+
         .social-buttons a i {
             color: black;
             font-size: 2em;
         }
+
+        .a-description {
+            margin-top: 2rem;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .construction-title {
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+            font-size: 1.5em;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <img class="logo" src="public/logo.png" alt="Logo Associazione Fino all'ultimo respiro">
+
         <div class="quote">
-            <p>"Ci sono gli eroi della Marvel gli eroi della Comics e poi ci siete voi... avete un potere che io considero quello più forte e più potente: date speranza a noi malati di fibrosi cistica."</p>
+            <p>"Ci sono gli eroi della Marvel gli eroi della Comics e poi ci siete voi... avete un potere che io
+                considero quello più forte e più potente: date speranza a noi malati di fibrosi cistica."</p>
             <p>- Alessia Mantonico</p>
         </div>
 
-        <h2> Sito attualmente in costruzione, stiamo lavorando su qualcosa di fantastico!</h2>
+        <h2>Progetto A nel mondo</h2>
+
+        <div id="map" style="height: 500px; width: 100%; margin-top: 20px;"></div>
+
+        <div class="a-description">
+            <p>Ogni <strong>A</strong> è realizzata a mano da noi ed è esteticamente diversa, ma custodisce sempre
+                le stesse parole:
+                una poesia dedicata ad <strong>Ale</strong> e alla sua incredibile storia di
+                <strong>#speranza</strong> 🦋
+            </p>
+
+            <p>📸 Scatta anche tu una foto con la tua <strong>A</strong> e <strong>taggaci sui social</strong>!
+                Un grande grazie a tutte le persone che ci hanno già inviato tantissimi scatti:
+                siamo curiosissimi di scoprire le prossime tappe di questo bellissimo viaggio 🤍</p>
+        </div>
+
+        <h2 class="construction-title">Sito attualmente in costruzione, stiamo lavorando su qualcosa di fantastico!</h2>
 
         <div class="donation-info">
             <h3>Sostienici:</h3>
@@ -89,12 +148,65 @@
             <p><strong>Beneficiario:</strong> Fino all'ultimo respiro</p>
             <p>Seguici sui nostri profili social per restare aggiornato sulle nostre iniziative</p>
         </div>
+
         <div class="social-buttons">
             <a href="https://www.facebook.com/finoallultimorespiro.org/"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/finoallultimorespiro_org/"><i class="fab fa-instagram"></i></a>
             <a href="mailto:info@finoallultimorespiro.org"><i class="fas fa-envelope"></i></a>
+        </div>
 
+        <div id="imageModal"
+            style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">
+            <div
+                style="position:relative; max-width:90%; max-height:90%; background:white; padding:20px; border-radius:10px;">
+                <span id="modalClose"
+                    style="position:absolute; top:10px; right:20px; font-size:1.5em; cursor:pointer;">&times;</span>
+                <div id="modalContent"></div>
+            </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([20, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        fetch('public/a/data.csv')
+            .then(response => response.text())
+            .then(csv => {
+                const lines = csv.trim().split('\n').slice(1); // salta intestazione
+                lines.forEach(line => {
+                    const [lat, lng, caption, image] = line.split(',');
+                    if (lat && lng && caption && image) {
+                        L.marker([parseFloat(lat), parseFloat(lng)])
+                            .addTo(map)
+                            .on('click', () => {
+                                document.getElementById('modalContent').innerHTML = `
+                            <h3 style="margin-top:0;">${caption}</h3>
+                            <img src="${image}" alt="${caption}" style="max-width:100%; max-height:70vh; margin-top:10px;">`;
+                                document.getElementById('imageModal').style.display = 'flex';
+                            });
+                    }
+                });
+            })
+            .catch(error => console.error('Errore nel caricamento del CSV:', error));
+
+        // Chiudi il modal cliccando sulla X
+        document.getElementById('modalClose').addEventListener('click', () => {
+            document.getElementById('imageModal').style.display = 'none';
+        });
+
+        // Chiudi il modal cliccando fuori dal contenuto (sullo sfondo scuro)
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('imageModal')) {
+                document.getElementById('imageModal').style.display = 'none';
+            }
+        });
+
+
+    </script>
 </body>
+
 </html>
