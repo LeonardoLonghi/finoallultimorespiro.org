@@ -7,7 +7,7 @@ lat,lng,caption,filename
 39.0565974,16.5249864,Calabria (Italia),public/a/2023/Calabria.jpg
 28.2935785,-16.6214471,Canarie (Spagna),public/a/2023/Canarie.jpg
 43.0799,79.0747,Cascate del Niagara (Canada),public/a/2023/Cascate del Niagara.jpg
-66.5622,-134.4167,Circolo Polare Artico - Alaska (Stati Uniti),public/a/2023/Circolo Polare Artico (Alaska).jpg
+65.8278,-144.0762,Circolo Polare Artico - Alaska (Stati Uniti),public/a/2023/Circolo Polare Artico (Alaska).jpg
 66.5622,25.732,Circolo Polare Artico - Lapponia (Finlandia),public/a/2023/Circolo Polare Artico (Lapponia).jpg
 45.9394759,9.1494101,Como (Italia),public/a/2023/Como 1.jpg
 29.59306,35.42,Deserto del Wadi Rum (Giordania),public/a/2023/Deserto del Wadi Rum (Giordania).jpg
@@ -22,7 +22,7 @@ lat,lng,caption,filename
 46.3801247,9.7049804,Lagh da Cavloc (Svizzera),public/a/2023/Lagh da Cavloc (Svizzera).jpg
 56.8406494,24.7537645,Lettonia,public/a/2023/Lettonia.jpg
 51.5074456,-0.1277653,Londra (Regno Unito),public/a/2023/Londra.jpeg
-49.8158683,6.1296751,Lussemburgo (Lussemburgo),public/a/2023/Lussemburgo.jpg
+49.6717,6.1619,Lussemburgo (Lussemburgo),public/a/2023/Lussemburgo.jpg
 28.3347722,-10.3713379,Marocco,public/a/2023/Marocco.jpg
 45.8307881,9.3802137,Monte Barro (Italia),public/a/2023/Monte Barro.jpeg
 44.2472592,7.5206967,Monte Bianco (Italia),public/a/2023/Monte Bianco.jpg
@@ -40,8 +40,8 @@ lat,lng,caption,filename
 39.2994106,16.3394496,Sila - Calabria (Italia),public/a/2023/Sila (Calabria).jpg
 37.3886303,-5.9953403,Siviglia (Spagna),public/a/2023/Siviglia.jpg
 39.2429284,17.1098924,Strongoli Marina - Calabria (Italia),public/a/2023/Strongoli Marina (Calabria).jpg
--2.936096,-48.9523366,Tailandia,public/a/2023/Tailandia 1.jpg
--2.9361267818967334,-48.95223662136217,Tailandia,public/a/2023/Tailandia 2.jpg
+16.83362725,100.16513445,Tailandia,public/a/2023/Tailandia 1.jpg
+15.83362725,99.16513445,Tailandia,public/a/2023/Tailandia 2.jpg
 46.2279737,9.4326302,Valchiavenna - Sondrio (Italia),public/a/2023/Valchiavenna (SO).jpeg
 45.4371908,12.3345898,Venezia (Italia),public/a/2023/Venezia.jpg
 42.3554334,-71.060511,Boston (Stati Uniti),public/a/2024/Boston_USA.jpg
@@ -67,7 +67,7 @@ lat,lng,caption,filename
 41.2128379,9.4054906,La Maddalena - Sardegna (Italia),public/a/2024/La Maddalena_ITALIA_Sardegna.jpg
 46.5381734,10.1359928,Livigno (Italia),public/a/2024/Livigno_ITALIA.jpeg
 46.0500268,14.5069289,Lubiana (Slovenia),public/a/2024/Lubiana_SLOVENIA.jpg
-49.815886950862186,6.129565932368378,Lussemburgo (Lussemburgo),public/a/2024/LUSSEMBURGO.JPG
+49.6117,6.1319,Lussemburgo (Lussemburgo),public/a/2024/LUSSEMBURGO.JPG
 48.1370318,11.5759246,MarienPlatz Monaco Di Baviera (Germania),public/a/2024/MarienPlatz_MONACODIBAVIERA.JPG
 -37.8142454,144.9631732,Melbourne (Australia),public/a/2024/Melbourne_AUSTRALIA.jpeg
 44.24714959405416,7.5207086246239845,Monte Bianco (Italia),public/a/2024/Monte Bianco_ITALIA.jpeg
