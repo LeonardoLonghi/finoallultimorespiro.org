@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fino all'ultimo respiro ODV ETS</title>
+  <meta name="description" content="Associazione Fino all'ultimo respiro ODV ETS: notizie, progetto «A nel mondo» e come sostenerci.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 1. Copertina -->
+  <header class="cover">
+    <img class="cover__logo" src="public/logo.png" alt="Logo Associazione Fino all'ultimo respiro">
+    <blockquote class="cover__quote">
+      <p>“Ci sono gli eroi della Marvel gli eroi della Comics e poi ci siete voi... avete un potere che io
+        considero quello più forte e più potente: date speranza a noi malati di fibrosi cistica.”</p>
+      <footer>— Alessia Mantonico</footer>
+    </blockquote>
+    <a class="cover__scroll" href="#news" aria-label="Vai alle notizie"><i class="fas fa-chevron-down"></i></a>
+  </header>
+
+  <main>
+    <!-- 2. Ultimi post Facebook -->
+    <section id="news" class="section">
+      <h2 class="section__title">Ultime notizie</h2>
+      <div id="posts-grid" class="posts-grid"></div>
+      <div id="posts-more" class="posts-more" hidden>
+        <h3 class="posts-more__title">Post precedenti</h3>
+        <div class="hscroll">
+          <button class="hscroll__btn hscroll__btn--prev" aria-label="Precedenti"><i class="fas fa-chevron-left"></i></button>
+          <div id="posts-carousel" class="hscroll__track"></div>
+          <button class="hscroll__btn hscroll__btn--next" aria-label="Successivi"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Mappa "A nel mondo" -->
+    <section id="mappa" class="section">
+      <h2 class="section__title">Progetto <strong>A</strong> nel mondo</h2>
+      <div id="map" class="map" aria-label="Mappa delle foto del progetto A nel mondo"></div>
+      <div class="prose">
+        <p>Ogni <strong>A</strong> è realizzata a mano da noi ed è esteticamente diversa, ma custodisce sempre
+          le stesse parole: una poesia dedicata ad <strong>Ale</strong> e alla sua incredibile storia di
+          <strong>#speranza</strong> 🦋</p>
+        <p>📸 Scatta anche tu una foto con la tua <strong>A</strong> e <strong>taggaci sui social</strong>!
+          Un grande grazie a tutte le persone che ci hanno già inviato tantissimi scatti:
+          siamo curiosissimi di scoprire le prossime tappe di questo bellissimo viaggio 🤍</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="donate">
+      <h3>Sostienici</h3>
+      <p><strong>C/C Banca:</strong> IT 11F0538751470000049207593</p>
+      <p><strong>Beneficiario:</strong> FINO ALL’ULTIMO RESPIRO ODV ETS</p>
+      <p>Seguici sui nostri profili social per restare aggiornato sulle nostre iniziative</p>
+    </div>
+    <nav class="social">
+      <a href="https://www.facebook.com/finoallultimorespiro.org/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/finoallultimorespiro_org/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:info@finoallultimorespiro.org" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </nav>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

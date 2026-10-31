@@ -1,0 +1,65 @@
+name: Build e deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 */2 * *' # ogni 2 giorni alle 05:00 UTC
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Immagini elaborate + manifest. La chiave cambia a ogni run (la cache è immutabile),
+      # il restore prende la più recente: ogni build scarica solo ciò che è nuovo.
+      # Gli originali (.cache/drive) non si salvano: servono solo se cambia PROCESS_VERSION.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            !.cache/drive
+          key: site-cache-${{ github.run_id }}
+          restore-keys: site-cache-
+
+      # Se Facebook/Drive/Sheet falliscono lo script esce con errore:
+      # il deploy non parte e resta online la versione precedente.
+      - run: npm run build
+        env:
+          FB_MAIN_TOKEN: ${{ secrets.FB_MAIN_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          GDRIVE_API_KEY: ${{ secrets.GDRIVE_API_KEY }}
+          GDRIVE_SHEET_ID: ${{ secrets.GDRIVE_SHEET_ID }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
