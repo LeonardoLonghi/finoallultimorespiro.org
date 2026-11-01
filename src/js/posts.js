@@ -47,17 +47,25 @@ export function postCard(post) {
   return `<article class="post post--${esc(post.type)}">${body}<div class="post__body">${header(post)}${text(post)}${footer(post)}</div></article>`;
 }
 
+/** Titolo per l'elenco compatto: prima riga del testo, o titolo del link, o data. */
+function postTitle(post) {
+  const line = (post.text || '').split('\n').map((l) => l.trim()).find(Boolean);
+  return line || post.link?.title || `Post del ${fmtDate(post.date)}`;
+}
+
+/** Riga dell'elenco dei post più vecchi: solo data e titolo. */
+export function postRow(post) {
+  return `<li><a class="postrow" href="${esc(post.permalink)}" target="_blank" rel="noopener">
+    <time class="postrow__date" datetime="${esc(post.date)}">${fmtDate(post.date)}</time>
+    <span class="postrow__title">${esc(postTitle(post))}</span></a></li>`;
+}
+
 export function renderPosts(posts, config = {}) {
   const visible = config.visiblePosts ?? 5;
   document.getElementById('posts-grid').innerHTML = posts.slice(0, visible).map(postCard).join('');
 
   const older = posts.slice(visible);
   if (!older.length) return;
-  const wrap = document.getElementById('posts-more');
-  const track = document.getElementById('posts-carousel');
-  track.innerHTML = older.map(postCard).join('');
-  wrap.hidden = false;
-  const step = () => track.clientWidth * 0.9;
-  wrap.querySelector('.hscroll__btn--prev').onclick = () => track.scrollBy({ left: -step(), behavior: 'smooth' });
-  wrap.querySelector('.hscroll__btn--next').onclick = () => track.scrollBy({ left: step(), behavior: 'smooth' });
+  document.getElementById('posts-older').innerHTML = older.map(postRow).join('');
+  document.getElementById('posts-more').hidden = false;
 }

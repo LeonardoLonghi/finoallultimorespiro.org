@@ -120,6 +120,7 @@ async function buildPosts() {
     posts.push(post);
   }
   await writeFileSafe(manifestPath, JSON.stringify(manifest, null, 1));
+  posts.sort((a, b) => b.date.localeCompare(a.date)); // dal più recente, indipendentemente dall'ordine nel foglio
   stats.postsPublished = posts.length;
   return posts;
 }

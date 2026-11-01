@@ -40,6 +40,8 @@ jobs:
           key: site-cache-${{ github.run_id }}
           restore-keys: site-cache-
 
+      # "npm run build" esegue prima sync-news (prebuild): aggiunge al foglio "news" i nuovi post
+      # con show=FALSE. Se fallisce o manca GOOGLE_SERVICE_ACCOUNT, avvisa e la build prosegue.
       # Se Facebook/Drive/Sheet falliscono lo script esce con errore:
       # il deploy non parte e resta online la versione precedente.
       - run: npm run build
@@ -49,6 +51,7 @@ jobs:
           GDRIVE_API_KEY: ${{ secrets.GDRIVE_API_KEY }}
           GDRIVE_SHEET_ID: ${{ secrets.GDRIVE_SHEET_ID }}
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
 
       - uses: actions/upload-pages-artifact@v4
         with:

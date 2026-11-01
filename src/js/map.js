@@ -1,8 +1,9 @@
 /* global L */
 // Mappa "A nel mondo" con marker fusi per vicinanza (clustering greedy in pixel, niente plugin).
 // - I gruppi si ricalcolano a ogni zoomend; al massimo zoom si fondono solo coordinate identiche.
-// - Click su un marker: popup con carosello di TUTTE le foto del gruppo (nessuno zoom).
+// - Click su un marker: popup (fuori dal contenitore, può sporgere) con carosello di TUTTE le foto del gruppo.
 import { createCarousel } from './carousel.js';
+import { createFloatingPopup } from './popup.js';
 
 const MERGE_PX = 40;
 
@@ -27,6 +28,7 @@ export function initMap(container, photos) {
   else map.setView([20, 0], 2);
 
   const layer = L.layerGroup().addTo(map);
+  const popup = createFloatingPopup(map);
 
   function cluster() {
     const radius = map.getZoom() >= map.getMaxZoom() ? 0 : MERGE_PX;
@@ -52,12 +54,7 @@ export function initMap(container, photos) {
       iconAnchor: [22, 22],
     });
     const m = L.marker(latlng, { icon, title: n > 1 ? `${n} foto` : g.photos[0].caption, keyboard: true });
-    m.on('click', () => {
-      L.popup({ className: 'apopup', maxWidth: 360, minWidth: 240, autoPanPadding: [20, 20] })
-        .setLatLng(latlng)
-        .setContent(createCarousel(g.photos))
-        .openOn(map);
-    });
+    m.on('click', () => popup.open(latlng, createCarousel(g.photos)));
     return m;
   }
 

@@ -3,7 +3,7 @@
 import { getJson, BuildError, warn } from './util.mjs';
 
 export const GRAPH = 'https://graph.facebook.com/v25.0';
-const MAX_SCAN = 200;
+export const MAX_SCAN = 200; // post più recenti considerati (sia da sync-news che dalla build)
 
 const FIELDS = 'id,message,created_time,permalink_url,full_picture,'
   + 'attachments{media_type,type,url,title,description,media,subattachments{media,url,type}}';
@@ -38,6 +38,30 @@ export async function findPosts(pageId, pageToken, ids) {
     if (!found.has(id)) warn(`Post ${id} non trovato negli ultimi ${scanned} post del feed: saltato`);
   }
   return { found, scanned };
+}
+
+/** Ultimi `max` post della pagina (dal più recente). */
+export async function listPosts(pageId, pageToken, max = MAX_SCAN) {
+  const out = [];
+  let url = `${GRAPH}/${pageId}/posts?fields=${encodeURIComponent(FIELDS)}&limit=50&access_token=${pageToken}`;
+  while (url && out.length < max) {
+    const r = await getJson(url);
+    out.push(...r.data);
+    url = r.paging?.next;
+  }
+  return out.slice(0, max);
+}
+
+/** Tipo suggerito per il foglio (photo/album/video/reel/link/status), modificabile a mano. */
+export function suggestType(raw) {
+  const a = raw.attachments?.data?.[0];
+  if (!a) return raw.full_picture ? 'photo' : 'status';
+  const t = `${a.media_type || ''} ${a.type || ''}`;
+  if (/reel/.test(t) || /\/reel\//.test(a.url || '')) return 'reel';
+  if ((a.subattachments?.data?.length || 0) > 1) return 'album';
+  if (/video/.test(t)) return 'video';
+  if (a.media_type === 'link' || /share/.test(a.type || '')) return 'link';
+  return 'photo';
 }
 
 /** Estrae l'URL reale dai redirect l.facebook.com e rimuove i parametri di tracciamento. */
