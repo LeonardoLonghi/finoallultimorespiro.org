@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '0 5 */2 * *' # ogni 2 giorni alle 05:00 UTC
+    - cron: '0 5,17 * * *' # due volte al giorno, alle 05:00 e alle 17:00 UTC
 
 permissions:
   contents: read
